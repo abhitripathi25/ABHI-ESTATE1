@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRouter from './routes/user.route.js';
 import authRouter from './routes/auth.route.js';
+
 dotenv.config();
 
 mongoose.connect("mongodb+srv://abhiiit1234:iitbombay1234@abhiestate1.emcnefi.mongodb.net/ABHIESTATE1?retryWrites=true&w=majority")
@@ -22,3 +23,14 @@ app.listen(3000, () => {
 // to use after including the first parameter
 app.use('/api/user',userRouter )
 app.use('/api/auth',authRouter )
+
+// if someone give wrong route in url then this should 
+// appear on the screen it means to create middleware
+app.use((err, req, res, next) =>{
+    const statusCode = err.statusCode || 500; 
+    const message = err.message || 'INTERNAL SERVER ERROR';
+    return res.status(statusCode).json({
+        success:false,
+        statusCode,message
+    });
+});
