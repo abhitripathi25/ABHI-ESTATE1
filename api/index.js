@@ -6,7 +6,7 @@ import authRouter from './routes/auth.route.js';
 
 dotenv.config();
 
-mongoose.connect("mongodb+srv://abhiiit1234:iitbombay1234@abhiestate1.emcnefi.mongodb.net/ABHIESTATE1?retryWrites=true&w=majority")
+mongoose.connect("mongodb://abhiiit1234:iitbombay1234@ac-eetykwa-shard-00-00.emcnefi.mongodb.net:27017,ac-eetykwa-shard-00-01.emcnefi.mongodb.net:27017,ac-eetykwa-shard-00-02.emcnefi.mongodb.net:27017/?ssl=true&replicaSet=atlas-729b8e-shard-0&authSource=admin&retryWrites=true&w=majority")
 .then(()=>{
     console.log('connected to mongodb');
 }).catch((err)=>{
